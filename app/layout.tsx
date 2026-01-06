@@ -24,6 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <ReactScan />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -32,3 +35,18 @@ export default function RootLayout({
     </html>
   );
 }
+
+const ReactScan = () => {
+  if (process.env.NODE_ENV !== "development") {
+    return null;
+  }
+  return (
+    <>
+      {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+      <script
+        crossOrigin="anonymous"
+        src="//unpkg.com/react-scan/dist/auto.global.js"
+      />
+    </>
+  );
+};
